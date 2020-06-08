@@ -39,7 +39,7 @@ for i in range(num_of_apple):
     appleY_change.append(4)
 
 
-def print_space_ship(x, y, i):
+def print_apple(x, y, i):
     screen.blit(apple[i], (x, y))
 
 
@@ -47,8 +47,8 @@ def print_bowl():
     screen.blit(bowl, (bowlX, bowlY))
 
 
-def collision_cheak(space_shipX, space_shipY, bowlX, bowlY):
-    distance = math.sqrt((math.pow(space_shipX - bowlX, 2) + (math.pow(space_shipY - bowlY, 2))))
+def collision_cheak(appleX, appleY, bowlX, bowlY):
+    distance = math.sqrt((math.pow(appleX - bowlX, 2) + (math.pow(appleY - bowlY, 2))))
 
     if distance <= 10:
         return True
@@ -111,7 +111,7 @@ while running:
             apple_bite = mixer.Sound('bite_apple.wav')
             apple_bite.play()
 
-        print_space_ship(appleX[i], appleY[i], i)
+        print_apple(appleX[i], appleY[i], i)
 
         appleY[i] += appleY_change[i]
     print_score()
