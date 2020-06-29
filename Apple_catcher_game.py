@@ -139,4 +139,49 @@ def game_loop():
         pygame.display.update()
 
 
-game_loop()
+pygame.init()
+
+screen = pygame.display.set_mode((800, 600))
+
+background = pygame.image.load('forest.png')
+bg = pygame.transform.scale(background, (800, 600))
+
+pygame.display.set_caption('Apple catcher')
+
+icon = pygame.image.load('physics.png')
+pygame.display.set_icon(icon)
+
+game_start = pygame.font.Font('freesansbold.ttf', 64)
+fontX = 100
+fontY = 270
+
+
+def print_game_start():
+    game_start_ = game_start.render("Press Enter to start", True, (0, 0, 0))
+    screen.blit(game_start_, (fontX, fontY))
+
+
+game_name = pygame.font.Font('font.ttf', 45)
+game_name_fontX = 240
+game_name_fontY = 100
+
+
+def print_game_name():
+    game_name_ = game_name.render("Apple Catcher", True, (0, 0, 0))
+    screen.blit(game_name_, (game_name_fontX, game_name_fontY))
+
+
+running = True
+
+while running:
+
+    screen.blit(bg, (0, 0))
+    print_game_start()
+    print_game_name()
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_RETURN:
+                game_loop()
+    pygame.display.update()
